@@ -1,0 +1,50 @@
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+class CarShowroom:
+    def __init__(self):
+        self.cars = []
+        self.prices = {
+            "CHERY": 200000,
+            "BYD": 200000,
+            "Honda": 250000,
+            "KIA": 250000,
+            "BMW": 300000,
+            "Mercedes": 300000
+        }
+
+    def welcome_customer(self):
+        name = input("What's your name? ")
+        age = input("What's your age? ")
+        print(f"Hello Mr {name}, What's the amount you want to pay?")
+        print("Note that we start from 100,000 to 1,000,000")
+
+        amount = int(input())
+        if amount < 100000 or amount > 1000000:
+            print("Please enter a valid amount")
+            return
+
+        print("Available car types:")
+        if 100000 <= amount <= 200000:
+            print("[TOYOTA, COROLLA]")
+        elif 200001 <= amount <= 300000:
+            print("[HONDA, CIVIC]")
+        elif 300001 <= amount <= 1000000:
+            print("[BMW, MERCEDES]")
+        else:
+            print("There are no cars available at this price")
+            return
+
+        car_brand = input("Enter the type of car you want: ")
+        car_model = input("Enter the model number: ")
+
+        car = Car(car_brand, car_model)
+        self.cars.append(car)
+
+        print(f"A car has been selected: {car.brand} {car.model}")
+        print("Thank you for dealing with us")
+
+showroom = CarShowroom()
+showroom.welcome_customer()
